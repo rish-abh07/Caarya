@@ -1,16 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
-    public Text dialogueText;
+    public TextMeshProUGUI dialogueText;
     public GameObject dialoguePrefab;
+    public GameObject nextButton;
     public GameObject character;
     public float Xoffset;
     public float Yoffset;
+    public GameObject canvas2;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class DialogueManager : MonoBehaviour
         }
         dialoguePrefab.transform.position = character.transform.position - new Vector3(Xoffset,Yoffset,0);
         dialoguePrefab.SetActive(true);
+        nextButton.SetActive(true);
         DisplayNextSentence();
     }
     public void DisplayNextSentence()
@@ -41,7 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-       dialoguePrefab.SetActive(false);
+        canvas2.SetActive(true);
     }
     // Update is called once per frame
    
